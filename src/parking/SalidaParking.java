@@ -14,6 +14,7 @@ public class SalidaParking implements Runnable {
         String codigoPuertaSalida;
 	int cantidadSaliendo;
 	
+        //Constructor
 	public SalidaParking(SincronizacionParking parking, int cantidadSaliendo, String codigoPuertaSalida) {
 		super();
 		this.parking = parking;
@@ -23,8 +24,10 @@ public class SalidaParking implements Runnable {
 
 	@Override
 	public void run() {
+                //Le pasamos a SincronizacionParking la cantidad de coches que salen, y el nombre de la puerta
 		parking.salirCoche(cantidadSaliendo,codigoPuertaSalida);
 		try {
+                        //Dormimos el hilo como mucho 3 segundos
 			Thread.sleep((long) (Math.random() * 3_000));
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

@@ -14,6 +14,7 @@ public class EntradaParking extends Thread {
         String codigoPuertaEntrada;
 	int cantidadEntrando;
         
+        //Constructor
 	public EntradaParking(SincronizacionParking parking, int cantidadEntrando, String codigoPuertaEntrada) {
 		super();
 		this.parking = parking;
@@ -23,8 +24,10 @@ public class EntradaParking extends Thread {
         
 	@Override
 	public void run() {
+                //Le pasamos a SincronizacionParking la cantidad de coches que entra, y el nombre de la puerta
 		parking.entrarCoche(cantidadEntrando, codigoPuertaEntrada);
 		try {
+                        //Dormimos el hilo como mucho 3 segundos
 			Thread.sleep((long) (Math.random() * 3_000));
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
